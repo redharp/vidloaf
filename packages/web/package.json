@@ -1,0 +1,15 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "UI package for vidloaf",
+  "main": "index.js",
+  "author": "trevor",
+  "license": "MIT",
+  "dependencies": {
+    "api": "1.0.0",
+    "react": "^16.8.4"
+  },
+  "devDependencies": {
+    "tslint-config-olo": "^0.4.0"
+  }
+}

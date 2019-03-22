@@ -1,0 +1,7 @@
+{
+  "extends": "tslint-config-olo",
+  "rules": {
+    "quotemark": true,
+    "whitespace": true
+  }
+}

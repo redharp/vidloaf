@@ -1,0 +1,7 @@
+{
+  "name": "vidloaf",
+  "private": true,
+  "workspaces": [
+    "packages/web", "packages/api"
+   ]
+}

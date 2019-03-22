@@ -1,0 +1,13 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "api package for vidloaf",
+  "main": "\"\"",
+  "license": "MIT",
+  "devDependencies": {
+    "tslint-config-olo": "^0.4.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}

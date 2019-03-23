@@ -7,3 +7,5 @@ export enum RedditTypes {
   t5 = "Subreddit",
   t6 = "Award"
 }
+
+export const BASE_URL = `https://reddit.com/r/`;

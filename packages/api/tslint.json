@@ -1,6 +1,0 @@
-{
-  "extends": "tslint-config-olo",
-  "rules": {
-    "whitespace": true
-  }
-}

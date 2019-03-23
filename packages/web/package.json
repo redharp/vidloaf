@@ -6,7 +6,7 @@
   "author": "trevor",
   "license": "MIT",
   "dependencies": {
-    "api": "1.0.0",
+    "backend": "1.0.0",
     "react": "^16.8.4"
   },
   "devDependencies": {

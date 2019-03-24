@@ -8,7 +8,13 @@
     "noUnusedParameters": false,
     "sourceMap": true,
     "target": "es2017",
-    "outDir": "lib"
+    "outDir": "lib",
+    "baseUrl": ".",
+    "paths": {
+      "@backend/*": [
+        "./src/*"
+      ]
+    }
   },
   "exclude": [
     "node_modules"

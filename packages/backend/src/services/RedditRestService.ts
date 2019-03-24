@@ -1,22 +1,22 @@
 import { HttpService } from './HttpService';
-import { BASE_URL, RedditTypes } from '../data/constants';
+import { BASE_URL } from '../data/constants';
 import { IRedditResponse, IRedditPost } from '../data/IRedditResponse';
-import { extractPostDetails } from '../utils/responses';
+import { buildPostDetails } from '../utils/responses';
 
 // tslint:disable:no-console
 
 export class RedditRestService {
     private _client: HttpService = new HttpService(BASE_URL);
 
-    private prepUrl(url: string): string {
-         return url + `/.json?limit=10`;
+    private prepUrl(url: string, limit: number): string {
+         return url + `/.json?limit=${limit}`;
     }
 
-    async getPosts(subreddit: string): Promise<IPostDetails[]> {
-        const url = this.prepUrl(subreddit);
+    async getPosts(subreddit: string, limit = 10): Promise<IPostDetails[]> {
+        const url: string = this.prepUrl(subreddit, limit);
         console.log(`url to getPosts ${BASE_URL + url}`);
         const resp: IRedditResponse = await this._client.get<IRedditResponse>(url);
-        const result: IPostDetails[] = resp.data.children.map((post: IRedditPost) =>  extractPostDetails(post));
+        const result: IPostDetails[] = resp.data.children.map((post: IRedditPost) =>  buildPostDetails(post));
         return result;
     }
 
@@ -39,4 +39,5 @@ export interface IPostDetails {
     title?: string;
     author?: string;
     thumbnail?: string;
+    videoUrl?: string;
 }

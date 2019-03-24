@@ -16,6 +16,7 @@ export class RedditRestService {
         const url: string = this.prepUrl(subreddit, limit);
         console.log(`url to getPosts ${BASE_URL + url}`);
         const resp: IRedditResponse = await this._client.get<IRedditResponse>(url);
+        console.log(resp)
         const result: IPostDetails[] = resp.data.children.map((post: IRedditPost) =>  buildPostDetails(post));
         return result;
     }

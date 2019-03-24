@@ -65,3 +65,6 @@ typings/
 
 # webpack
 .webpack
+
+# vscode
+.vscode

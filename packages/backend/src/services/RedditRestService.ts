@@ -14,10 +14,10 @@ export class RedditRestService {
 
     async getPosts(subreddit: string, limit = 10): Promise<IPostDetails[]> {
         const url: string = this.prepUrl(subreddit, limit);
-        console.log(`url to getPosts ${BASE_URL + url}`);
+        console.log(`getPosts called with ${BASE_URL + url}`);
         const resp: IRedditResponse = await this._client.get<IRedditResponse>(url);
-        console.log(resp)
         const result: IPostDetails[] = resp.data.children.map((post: IRedditPost) =>  buildPostDetails(post));
+        console.log(`retrieved ${result.length} listings from ${subreddit}`);
         return result;
     }
 

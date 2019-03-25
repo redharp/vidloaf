@@ -1,6 +1,5 @@
 import { IRedditPost } from "../data/IRedditResponse";
 import { IPostDetails } from "../services/RedditRestService";
-import { decodeHTML5Strict }from 'entities';
 import { YT_TYPE, TWITCH_TYPE } from '@backend/data/constants'
 import { buildYtEmbed, buildTwitchEmbed } from "./encoding";
 
@@ -8,6 +7,7 @@ export function buildPostDetails(raw: IRedditPost): IPostDetails {
     let embedUrl: string;
     const { id, author, score, title, media, url } = raw.data;
     const details: IPostDetails = {};
+    if (!media) return;
     details.id = id;
     details.author = author;
     details.score = score;
@@ -15,7 +15,6 @@ export function buildPostDetails(raw: IRedditPost): IPostDetails {
     details.video = {
         type: media.type,
         embed: {
-            html: decodeHTML5Strict(media.oembed.html),
             type: media.oembed.type,
             thumbnail: media.oembed.thumbnail_url
         }

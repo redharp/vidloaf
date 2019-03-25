@@ -8,15 +8,17 @@
     "noUnusedParameters": false,
     "sourceMap": true,
     "target": "es2017",
+    "module": "es6",
     "outDir": "lib",
-    "baseUrl": ".",
+    "baseUrl": "./src/",
     "paths": {
       "@backend/*": [
-        "./src/*"
+        "*"
       ]
     }
   },
   "include": [
+    "src/**/*",
     "test/**/*"
   ],
  "exclude": [

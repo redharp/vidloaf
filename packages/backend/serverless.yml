@@ -6,13 +6,18 @@ plugins:
   - serverless-webpack
   - serverless-offline
 
+# serverless-webpack options
+custom:
+  webpack:
+    packager: yarn
+
 provider:
   name: aws
   runtime: nodejs8.10
 
 functions:
   videos:
-    handler: handlers.getVideos
+    handler: ./src/lambda/index.getVideos
     events:
       - http:
           method: get

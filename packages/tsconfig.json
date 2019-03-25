@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "lib": [
+        "es2017"
+      ],
+      "moduleResolution": "node",
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "sourceMap": true,
+      "target": "es2017",
+      "module": "es6",
+      "outDir": "lib",
+      "baseUrl": "./",
+      "paths": {
+        "@backend/*": ["backend/src/*"],
+        "@web/*": ["web/src/*"],
+        "@logger/*": ["logger/src/*"]
+      }
+    }
+  }
+  

@@ -1,21 +1,23 @@
 import * as React from 'react';
 import { Videos } from './Videos';
+import { Heading, Flex } from 'rebass';
 
 class Vidloaf extends React.Component {
 
     render() {
-        // tslint:disable-next-line:no-console
-        console.log('hi');
         return (
-            <div>
-                <header className="test">
-                    <h1>Vidloaf for Reddit</h1>
-                </header>
-                <div>
-                    <Videos value={'https://clips.twitch.tv/embed?clip=ElatedOnerousSkirretTakeNRG&autoplay=false'} />
-                    <Videos value={'https://www.youtube.com/embed/51cYfCsyvuM?feature=oembed&enablejsapi=1'} />
-                </div>
-            </div>
+                <Flex mx='auto'>
+                    <Heading
+                        fontSize={[3, 4, 5]}
+                        fontWeight='bold'
+                        fontFamily='Helvetica'
+                        width='15'
+                        mx='auto'
+                        mt={2}>
+                        vidloaf
+                        for reddit
+                </Heading>
+                </Flex>
         );
     }
 }

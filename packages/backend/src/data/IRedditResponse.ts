@@ -102,6 +102,7 @@ export interface IOembed {
 export interface IMedia {
     type?: string;
     oembed?: IOembed;
+    reddit_video?: IRedditVideo;
 }
 
 export interface IData {
@@ -200,4 +201,15 @@ export interface IData {
     created_utc?: number;
     media?: IMedia;
     is_video?: boolean;
+}
+
+interface IRedditVideo {
+    fallback_url?: string;
+    height?: number;
+    width?: number;
+    scrubber_media_url?: string;
+    duration?: number;
+    hls_url?: string;
+    is_gif?: boolean;
+    transcoding_status?: string;
 }

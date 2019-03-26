@@ -1,7 +1,9 @@
 import { HttpService } from './HttpService';
-import { BASE_URL } from '../data/constants';
-import { IRedditResponse, IRedditPost } from '../data/IRedditResponse';
-import { buildPostDetails } from '../utils/responses';
+import { BASE_URL } from '@backend/data/constants';
+import { IRedditResponse } from '@backend/data/IRedditResponse';
+import { videoResponseBuilder } from '@backend/utils/responses';
+import { IVideoResponse } from '@backend/data/interfaces';
+
 
 // tslint:disable:no-console
 
@@ -12,33 +14,12 @@ export class RedditRestService {
          return url + `/.json?limit=${limit}`;
     }
 
-    async getPosts(subreddit: string, limit = 10): Promise<IPostDetails[]> {
+    async getPosts(subreddit: string, limit = 10): Promise<IVideoResponse[]> {
         const url: string = this.prepUrl(subreddit, limit);
         console.log(`getPosts called with ${BASE_URL + url}`);
         const resp: IRedditResponse = await this._client.get<IRedditResponse>(url);
-        const result: IPostDetails[] = resp.data.children.map((post: IRedditPost) =>  buildPostDetails(post));
-        console.log(`retrieved ${result.length} listings from ${subreddit}`);
+        const result: IVideoResponse[] = videoResponseBuilder(resp.data.children);
         return result;
     }
 
-}
-
-export interface IOembed {
-    type?: string;
-    html?: string;
-    thumbnail?: string;
-}
-export interface IVideoDetails {
-    type?: string;
-    embed?: IOembed;
-
-}
-export interface IPostDetails {
-    id?: string;
-    score?: number;
-    video?: IVideoDetails;
-    title?: string;
-    author?: string;
-    thumbnail?: string;
-    videoUrl?: string;
 }

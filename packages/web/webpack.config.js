@@ -1,3 +1,4 @@
+const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require("path");
@@ -20,11 +21,15 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.json']
+    extensions: ['.tsx', '.ts', '.js', '.json'],
+    plugins: [
+      new TsConfigPathsPlugin()
+    ]
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ template: './src/index.html' })
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new CheckerPlugin()
   ],
   devServer: {
     compress: true,

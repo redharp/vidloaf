@@ -3,7 +3,7 @@ import { HttpService } from '../src/services/HttpService';
 import { IRedditResponse, IRedditPost } from '../src/data/IRedditResponse';
 import { RedditRestService } from '../src/services/RedditRestService';
 import { createSandbox, SinonStub, SinonSandbox } from 'sinon';
-import { IPostDetails } from '@backend/services/RedditRestService';
+import { IVideoResponse } from '@backend/data/interfaces';
 
 describe(`RedditRestService`, () => {
     let subReddit = 'fakesub';
@@ -26,9 +26,8 @@ describe(`RedditRestService`, () => {
         const httpStub = sandbox.stub(httpService);
         httpStub.get.resolves(rawResponse);
         (redditService['_client'] as any) = httpStub;
-        // (redditService['prepUrl'] as any) = prepUrlStub;
 
-        const result: IPostDetails[] = await redditService.getPosts(subReddit);
+        const result: IVideoResponse[] = await redditService.getPosts(subReddit);
         for (const post of result) {
             Object.keys(post).forEach((key: string) => expect(expectedFields.includes(key)).to.be.true);
         }

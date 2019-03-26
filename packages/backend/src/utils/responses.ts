@@ -1,26 +1,59 @@
-import { IRedditPost } from "../data/IRedditResponse";
-import { IPostDetails } from "../services/RedditRestService";
-import { YT_TYPE, TWITCH_TYPE } from '@backend/data/constants'
-import { buildYtEmbed, buildTwitchEmbed } from "./encoding";
+import { IRedditPost, IMedia } from "../data/IRedditResponse";
+import { YT_TYPE, TWITCH_TYPE, STREAMABLE_TYPE } from '@backend/data/constants'
+import { buildYtEmbed, buildTwitchEmbed, buildStreamableEmbed } from "./encoding";
+import { IVideo, IVideoResponse } from '../data/interfaces';
 
-export function buildPostDetails(raw: IRedditPost): IPostDetails {
-    let embedUrl: string;
-    const { id, author, score, title, media, url } = raw.data;
-    const details: IPostDetails = {};
-    if (!media) return;
-    details.id = id;
-    details.author = author;
-    details.score = score;
-    details.title = title;
-    details.video = {
-        type: media.type,
-        embed: {
-            type: media.oembed.type,
-            thumbnail: media.oembed.thumbnail_url
-        }
+
+export function videoResponseBuilder(posts: IRedditPost[]): IVideoResponse[] { 
+    console.log(JSON.stringify(posts, null, 2))
+    return posts
+        .map((post: IRedditPost) => buildVideo(post))
+        .filter((v: IVideoResponse) => v.video);
+}
+
+function buildVideo(post: IRedditPost): IVideoResponse {
+
+    if (!post.data.id) return;
+    const { id, author, score, title, media, url } = post.data;
+    const video: IVideo = media ? mediaHandler(media, url) : undefined;
+    return {
+        id,
+        title,
+        originalPoster: author,
+        score,
+        video,
+    };
+}
+function mediaHandler(media: IMedia, url: string): IVideo {
+    let video: IVideo = {};
+    const { type, reddit_video } = media;
+    if (type) {
+        switch (type) {
+            case YT_TYPE: {
+                video.origin = 'youtube';
+                video.url = buildYtEmbed(url);
+                video.thumbnailUrl = media.oembed.thumbnail_url;
+                break;
+            }
+            case TWITCH_TYPE: {
+                video.origin = 'twitch';
+                video.url = buildTwitchEmbed(url);
+                video.thumbnailUrl = media.oembed.thumbnail_url;
+                break;
+            }
+            case STREAMABLE_TYPE: {
+                video.origin = 'streamable';
+                video.url = buildStreamableEmbed(url);
+                video.thumbnailUrl = media.oembed.thumbnail_url;
+                break;
+            }
+            default:
+                break;
+        };
+    } else if (reddit_video) {
+        video.origin = 'reddit';
+        video.url = media.reddit_video.fallback_url;
+        video.thumbnailUrl = '';
     }
-    if (details.video.type === YT_TYPE) embedUrl = buildYtEmbed(url)
-    if (details.video.type === TWITCH_TYPE) embedUrl = buildTwitchEmbed(url);
-    details.videoUrl = embedUrl;
-    return details;
+    return video;
 }

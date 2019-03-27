@@ -10,15 +10,18 @@
     "build": "webpack"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "backend": "1.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "rebass": "^3.1.0"
+    "rebass": "^3.1.0",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.3",
     "@types/rebass": "^3.0.3",
+    "@types/styled-components": "^4.1.12",
     "awesome-typescript-loader": "^5.2.1",
     "clean-webpack-plugin": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",

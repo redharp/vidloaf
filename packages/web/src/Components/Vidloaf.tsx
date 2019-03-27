@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Videos } from './Videos';
-import { Heading, Flex } from 'rebass';
+import { VideoContainer } from './VideoContainer';
+import { Heading, Flex, Button } from 'rebass';
 
 class Vidloaf extends React.Component {
 
@@ -16,7 +16,10 @@ class Vidloaf extends React.Component {
                         mt={2}>
                         vidloaf
                         for reddit
-                </Heading>
+                    </Heading>
+                    <VideoContainer />
+                    <Button>Prev</Button>
+            <Button>Next</Button>
                 </Flex>
         );
     }

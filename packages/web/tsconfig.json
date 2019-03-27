@@ -5,9 +5,11 @@
       "noImplicitAny": false,
       "module": "es6",
       "target": "es5",
+      "esModuleInterop": true,
       "jsx": "react",
       "allowJs": true,
       "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
       "baseUrl": "./src/",
       "skipLibCheck": true,
       "paths": {

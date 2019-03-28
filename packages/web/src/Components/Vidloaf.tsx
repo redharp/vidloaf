@@ -1,26 +1,27 @@
 import * as React from 'react';
 import { VideoContainer } from './VideoContainer';
-import { Heading, Flex, Button } from 'rebass';
+import { Heading, Box, Button, Flex } from 'rebass';
 
 class Vidloaf extends React.Component {
 
     render() {
         return (
-                <Flex mx='auto'>
-                    <Heading
-                        fontSize={[3, 4, 5]}
-                        fontWeight='bold'
-                        fontFamily='Helvetica'
-                        width='15'
-                        mx='auto'
-                        mt={2}>
-                        vidloaf
-                        for reddit
-                    </Heading>
-                    <VideoContainer />
-                    <Button>Prev</Button>
-            <Button>Next</Button>
-                </Flex>
+            <div style={{ marginLeft: 'auto', marginRight: 'auto'}} >
+                <Box>
+
+                        <Heading
+                        mx={500}
+                            fontSize={[3, 4, 5]}
+                            fontWeight='bold'
+                            fontFamily='Helvetica'
+                            width='15'
+                            mt={2}>
+                            vidloaf
+                            for reddit
+                        </Heading>
+                            <VideoContainer />
+                </Box>
+            </div>
         );
     }
 }

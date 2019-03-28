@@ -1,46 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import Axios, { AxiosResponse, AxiosError } from 'axios';
 import { Video, VideoProps } from './videos/Video';
-import { IVideoResponse } from '@backend/data/interfaces'
-import { Button, Flex } from 'rebass';
+import { getRedditVideo, getRedditVideos } from '../lib/videos';
+import { Button, Box } from 'rebass';
+import { IVideoResponse } from '@backend/data/interfaces';
+
+class VideosState {
+    readonly count: number = 0;
+    readonly video: VideoProps = {};
+    readonly videos: IVideoResponse[] = [];
+}
+
+export class VideoContainer extends React.Component<VideoProps, VideosState> {
 
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            videos: [],
+            video: {},
+            count: 0
+        }
+    }
 
-export function VideoContainer() {
-    const [videos, setVideos] = useState();
-    const [video, setVideo] = useState();
+    componentDidMount() {
+        getRedditVideos().then((videos: IVideoResponse[]) => {
+            this.setState({
+                videos,
+                video: getRedditVideo(videos[this.state.count])
+            });
+        });
+    }
     
-    useEffect(() => {
-        function setVid(vid) {
-            const { title, originalPoster, score, video: { url } } = vid;
-            const video: VideoProps = {
-                title,
-                author: originalPoster,
-                upvotes: score,
-                url,
-            };
-            setVideo(video);
-        }
-
-        function getVideos() {
-            Axios
-                .get('http://localhost:3000/v1/videos?subreddit=videos&count=3')
-                .then((resp: AxiosResponse<{ videos: IVideoResponse[] }>) => {
-                    const { videos } = resp.data;
-                    setVideos(videos);
-                    setVid(videos[0]);
-                })
-                .catch((err: AxiosError) => {
-                    console.log(`Caught major error ${JSON.stringify(err, null, 2)}`);
-                });
-        }
-        return getVideos();
-    }, []);
 
 
-    return (
-        <Flex mx='auto'>
-            <Video {...video} />
-        </Flex>
-    )
+    render() {
+        return (
+            <Box mx={500} p={1}>
+                <Video {...this.state.video} />
+                <Button onClick={() => this.setState({
+                    count: (this.state.count + 1),
+                    video: getRedditVideo(this.state.videos[this.state.count])
+                })}>Next</Button>
+            </Box>
+        )
+    }
 }

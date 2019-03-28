@@ -15,7 +15,7 @@ export function getReddit36(value: string): IRedditType {
 
 export function buildTwitchEmbed(url: string): string {
   const slug: string[] = url.split('/');
-  return `${TWITCH_TYPE}${TWITCH_EMBED}${slug[slug.length -1]}${TWITCH_APPEND}`
+  return `https://${TWITCH_TYPE}${TWITCH_EMBED}${slug[slug.length -1]}${TWITCH_APPEND}`
 }
 
 export function buildYtEmbed(url: string): string {

@@ -5,6 +5,8 @@ export interface IVideoResponse {
     title?: string;
     originalPoster?: string;
     video?: IVideo;
+    submitted?: Date;
+    comments?: string;
 }
 
 export interface IVideo {

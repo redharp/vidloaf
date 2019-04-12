@@ -3,7 +3,6 @@
       "lib": [
         "es2017"
       ],
-      "moduleResolution": "node",
       "noUnusedLocals": false,
       "noUnusedParameters": false,
       "sourceMap": true,
@@ -16,6 +15,11 @@
         "@web/*": ["web/src/*"],
         "@logger/*": ["logger/src/*"]
       }
-    }
+    },
+    "include": [
+      "packages/*/src/**/*"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
   }
-  

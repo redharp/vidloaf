@@ -6,22 +6,16 @@ class Vidloaf extends React.Component {
 
     render() {
         return (
-            <div style={{ marginLeft: 'auto', marginRight: 'auto'}} >
-                <Box>
-
-                        <Heading
-                        mx={500}
-                            fontSize={[3, 4, 5]}
-                            fontWeight='bold'
-                            fontFamily='Helvetica'
-                            width='15'
-                            mt={2}>
-                            vidloaf
-                            for reddit
+            <Box>
+                <Heading
+                    fontSize={[3, 4, 5]}
+                    fontWeight='bold'
+                    fontFamily='Helvetica'>
+                    vidloaf
+                    for reddit
                         </Heading>
-                            <VideoContainer />
-                </Box>
-            </div>
+                <VideoContainer />
+            </Box>
         );
     }
 }

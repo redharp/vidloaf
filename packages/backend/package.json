@@ -10,6 +10,7 @@
     "@types/entities": "^1.1.1",
     "axios": "^0.18.0",
     "entities": "^1.1.2",
+    "moment": "^2.24.0",
     "simple-base": "^1.0.0",
     "source-map-support": "^0.5.10"
   },

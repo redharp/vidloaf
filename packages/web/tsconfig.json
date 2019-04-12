@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
+      "experimentalDecorators": true,
       "outDir": "./dist/",
       "sourceMap":  true,
       "noImplicitAny": false,
       "module": "es6",
-      "target": "es5",
+      "target": "es2017",
       "esModuleInterop": true,
       "jsx": "react",
       "allowJs": true,
@@ -12,6 +13,7 @@
       "allowSyntheticDefaultImports": true,
       "baseUrl": "./src/",
       "skipLibCheck": true,
+      "types": [],
       "paths": {
         "@backend/*": [
           "../../backend/src/*"

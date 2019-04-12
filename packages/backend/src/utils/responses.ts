@@ -4,8 +4,9 @@ import { buildYtEmbed, buildTwitchEmbed, buildStreamableEmbed } from "./encoding
 import { IVideo, IVideoResponse } from '../data/interfaces';
 
 
+
 export function videoResponseBuilder(posts: IRedditPost[]): IVideoResponse[] { 
-    console.log(JSON.stringify(posts, null, 2))
+    // console.log(JSON.stringify(posts, null, 2))
     return posts
         .map((post: IRedditPost) => buildVideo(post))
         .filter((v: IVideoResponse) => v.video);
@@ -14,14 +15,17 @@ export function videoResponseBuilder(posts: IRedditPost[]): IVideoResponse[] {
 function buildVideo(post: IRedditPost): IVideoResponse {
 
     if (!post.data.id) return;
-    const { id, author, score, title, media, url } = post.data;
+    const { id, author, score, title, media, url, permalink, created_utc } = post.data;
     const video: IVideo = media ? mediaHandler(media, url) : undefined;
+    const submitted: Date = new Date(Number(`${created_utc}000`));
     return {
         id,
         title,
         originalPoster: author,
         score,
         video,
+        comments: permalink,
+        submitted,
     };
 }
 function mediaHandler(media: IMedia, url: string): IVideo {

@@ -22,6 +22,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
+    alias: { mobx: __dirname + "/node_modules/mobx/lib/mobx.es6.js" },
     plugins: [
       new TsConfigPathsPlugin()
     ]

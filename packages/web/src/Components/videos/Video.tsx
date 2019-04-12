@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Text, Box, Flex, Button } from 'rebass';
+import React from 'react';
+import { Text, Box, Flex, Link, Card } from 'rebass';
+import moment from 'moment'
+
 
 export interface VideoProps {
     title?: string;
     author?: string;
     upvotes?: number;
     url?: string;
+    submitted?: Date;
+    comments?: string;
 }
 
 export function Video(props: VideoProps) {
+    const momentTime: string = moment(new Date(props.submitted)).format('L');
 
     return (
-        <Box
-        width={1}
-        mt={50}
-        >
-           <Text fontFamily='helvetica' fontWeight='bolder'>{props.title}</Text>
+        <Flex>
+            <Box>
+                <Link style={{textDecoration: 'none'}} href={`$https://reddit.com${props.comments}`}><Text fontFamily='helvetica' fontWeight='bolder' color='black'>{props.title}</Text></Link>
                 <iframe
                     width='560'
                     height='315'
@@ -23,8 +26,11 @@ export function Video(props: VideoProps) {
                     allowFullScreen
                     src={props.url}
                 />
-            <Text> {props.upvotes} ⚡ posted by: {props.author}</Text>
+                <Text fontSize='small'>⚡ { props.upvotes }</Text>
+                <Text fontSize='small'>👨‍💻 { props.author }</Text>
+                <Text fontSize='small'>🗓 { momentTime }</Text>
             </Box>
+        </Flex>
 
     );
 

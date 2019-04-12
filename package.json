@@ -2,6 +2,8 @@
   "name": "vidloaf",
   "private": true,
   "workspaces": [
-    "packages/web", "packages/backend", "packages/logger"
-   ]
+    "packages/web",
+    "packages/backend",
+    "packages/logger"
+  ]
 }

@@ -1,4 +1,4 @@
-import Axios, {AxiosResponse} from 'axios';
+import Axios, { AxiosResponse } from "axios";
 import { IVideoResponse } from '@backend/data/interfaces';
 import { VideoProps } from '../Components/videos/Video';
 
@@ -18,7 +18,6 @@ export async function getRedditVideos(subreddit?: string): Promise<IVideoRespons
 
 export function getRedditVideo(video: IVideoResponse): VideoProps {
     const { title, originalPoster, score, video: { url }, comments, submitted } = video;
-    const hmm = new Date(submitted);
 
     return {
         title,

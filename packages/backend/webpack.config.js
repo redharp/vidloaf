@@ -3,7 +3,7 @@ const Dotenv = require('dotenv-webpack');
 const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/app.ts',
   devtool: 'source-map',
   resolve: {

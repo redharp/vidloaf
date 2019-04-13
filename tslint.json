@@ -1,5 +1,4 @@
 {
-  "extends": "tslint-config-olo",
   "rules": {
     "quotemark": false,
     "whitespace": true

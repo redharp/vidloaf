@@ -32,6 +32,6 @@ export function buildYtEmbed(url: string): string {
 
 export function buildStreamableEmbed(url: string): string {
   const slug: string[] = url.split('/');
-  return `https://api.streamable.com/oembed.json?url=${url}`
-  // return `https://${STREAMABLE_TYPE}${STREAMABLE_EMBED}${slug[slug.length - 1]}?autoplay=false&loop=false`
+  // return `https://api.streamable.com/oembed.json?url=${url}`
+  return `https://${STREAMABLE_TYPE}${STREAMABLE_EMBED}${slug[slug.length - 1]}?autoplay=false&loop=false`
 }

@@ -44,19 +44,7 @@ export class VideoContainer extends React.Component<VideoProps, VideosState> {
 
     render() {
         return (
-            <Box>
-                <Flex>
-                    <Box width={5 / 8} />
-                    <Text width={3 / 8}>{this.state.count + 1} / {this.state.videos.length}</Text>
-                </Flex>
-                <SubredditList  {...{
-                    subs: [
-                        { name: 'videos' },
-                        { name: 'livestreamfail' },
-                        { name: 'destiny' },
-                    ],
-                    clicker: this.handleSubredditChange
-                }} />
+            <Box mx='auto'>
                 <Video {...this.state.video} />
                 <Button fontSize={24} bg='white' color='black' style={{ cursor: 'pointer' }} onClick={(e) => {
                     e.preventDefault();
@@ -76,6 +64,17 @@ export class VideoContainer extends React.Component<VideoProps, VideosState> {
                         count,
                     })
                 }}>Next</Button>
+                    {/* <Box width={5 / 8} /> */}
+                        <Text>{this.state.count + 1} / {this.state.videos.length}</Text>
+                        <Box size={5 / 6} />
+                <SubredditList  {...{
+                    subs: [
+                        { name: 'videos' },
+                        { name: 'livestreamfail' },
+                        { name: 'destiny' },
+                    ],
+                    clicker: this.handleSubredditChange
+                    }} />
             </Box>
         )
     }

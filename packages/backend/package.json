@@ -8,7 +8,7 @@
     "build": "webpack",
     "start": "yarn run watch:build && yarn run watch:start",
     "watch:build": "webpack --watch",
-    "watch:start": "yarn build && yarn nodemon ../dist/server/main.js"
+    "watch:start": "yarn nodemon ../dist/server/main.js"
   },
   "dependencies": {
     "@types/entities": "^1.1.1",

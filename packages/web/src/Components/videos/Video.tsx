@@ -16,10 +16,10 @@ export function Video(props: VideoProps) {
     const momentTime: string = moment(new Date(props.submitted)).format('L');
 
     return (
-        <Flex>
+        // <Flex>
             <Box>
-                <Link style={{textDecoration: 'none'}} href={`https://reddit.com${props.comments}`}><Text fontFamily='helvetica' fontWeight='bolder' color='black'>{props.title}</Text></Link>
-                <iframe
+                <Link p={5} style={{textDecoration: 'none'}} href={`https://reddit.com${props.comments}`}><Text fontFamily='helvetica' fontWeight='bolder' color='black'>{props.title}</Text></Link>
+            <iframe
                     width='560'
                     height='315'
                     frameBorder='0'
@@ -30,7 +30,7 @@ export function Video(props: VideoProps) {
                 <Text fontSize='small'>👨‍💻 { props.author }</Text>
                 <Text fontSize='small'>🗓 { momentTime }</Text>
             </Box>
-        </Flex>
+        // </Flex>
 
     );
 

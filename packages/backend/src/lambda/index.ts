@@ -1,1 +1,0 @@
-export { videos as getVideos } from './videos';

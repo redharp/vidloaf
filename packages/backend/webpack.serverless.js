@@ -1,10 +1,10 @@
 const path = require('path');
-const Dotenv = require('dotenv-webpack');
+const slsw = require('serverless-webpack');
 const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
-  mode: 'development',
-  entry: './src/app.ts',
+  mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
+  entry: slsw.lib.entries,
   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
@@ -14,7 +14,7 @@ module.exports = {
   },
   output: {
     libraryTarget: 'commonjs',
-    path: path.resolve('..', 'dist/server'),
+    path: path.join(__dirname, '.webpack'),
     filename: '[name].js',
   },
   target: 'node',
@@ -22,11 +22,10 @@ module.exports = {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       // { test: /\.tsx?$/, loader: 'awesome-typescript-loader', exclude: /node_modules/ },
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader', exclude: /node_modules/ },
+      { test: /\.tsx?$/, loader: 'ts-loader', exclude: /node_modules/ },
     ],
   },
   plugins: [
-      new CheckerPlugin(),
-      new Dotenv()
+    new CheckerPlugin()
   ]
 };

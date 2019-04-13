@@ -9,11 +9,11 @@ module.exports = {
   devtool: 'source-map',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve('..', 'dist/web')
   },
   module: {
     rules: [
-      { 
+      {
         test: /\.(ts|tsx)?$/,
         loader: 'awesome-typescript-loader',
         exclude: /node_modules/

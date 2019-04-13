@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios, { AxiosResponse, AxiosError } from 'axios';
 import { Video, VideoProps } from './videos/Video';
 import { getRedditVideo, getRedditVideos } from '../lib/videos';
-import { Button, Box } from 'rebass';
+import { Button, Box, Text, Flex } from 'rebass';
 import { IVideoResponse } from '@backend/data/interfaces';
 import { SubredditList } from './SubredditList';
 
@@ -24,14 +24,20 @@ export class VideoContainer extends React.Component<VideoProps, VideosState> {
             count: 0
         }
     }
-
-    componentDidMount() {
-        getRedditVideos('livestreamfail').then((videos: IVideoResponse[]) => {
+    performVideoLookup(subreddit?: string): void {
+        getRedditVideos(subreddit || 'videos').then((videos: IVideoResponse[]) => {
             this.setState({
                 videos,
                 video: getRedditVideo(videos[this.state.count]),
             });
         });
+    }
+    async componentDidMount() {
+        await this.performVideoLookup();
+    }
+
+    handleSubredditChange = async (name: string) => {
+        await this.performVideoLookup(name);
     }
 
 
@@ -39,29 +45,37 @@ export class VideoContainer extends React.Component<VideoProps, VideosState> {
     render() {
         return (
             <Box>
-                <SubredditList {...{
+                <Flex>
+                    <Box width={5 / 8} />
+                    <Text width={3 / 8}>{this.state.count + 1} / {this.state.videos.length}</Text>
+                </Flex>
+                <SubredditList  {...{
                     subs: [
                         { name: 'videos' },
                         { name: 'livestreamfail' },
-                        { name: 'destiny' },]
+                        { name: 'destiny' },
+                    ],
+                    clicker: this.handleSubredditChange
                 }} />
                 <Video {...this.state.video} />
-                <Button fontSize={24} bg='white' color='black' onClick={(e) => {
+                <Button fontSize={24} bg='white' color='black' style={{ cursor: 'pointer' }} onClick={(e) => {
                     e.preventDefault();
                     const count = this.state.count > 0 ? this.state.count - 1 : 0;
                     console.log(`count ${this.state.count} clicked`)
                     this.setState({
                         video: getRedditVideo(this.state.videos[count]),
                         count,
-                })}}>Prev</Button>
-                <Button fontSize={24} bg='white' color='black' onClick={(e) => {
+                    })
+                }}>Prev</Button>
+                <Button fontSize={24} bg='white' color='black' style={{ cursor: 'pointer' }} onClick={(e) => {
                     e.preventDefault();
                     console.log(`count ${this.state.count} clicked`)
                     const count = this.state.count + 1;
                     this.setState({
                         video: getRedditVideo(this.state.videos[count]),
                         count,
-                })}}>Next</Button>
+                    })
+                }}>Next</Button>
             </Box>
         )
     }

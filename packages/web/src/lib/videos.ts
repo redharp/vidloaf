@@ -7,7 +7,7 @@ import { VideoProps } from '../Components/videos/Video';
 export async function getRedditVideos(subreddit?: string): Promise<IVideoResponse[]> {
     const sub: string = subreddit ? subreddit : 'videos';
     try {
-         const resp: AxiosResponse<{videos: IVideoResponse[]}> =  await Axios.get(`http://localhost:3000/v1/videos?subreddit=${sub}&count=15`);
+         const resp: AxiosResponse<{videos: IVideoResponse[]}> =  await Axios.get(`http://localhost:8080/v1/clips/${sub}`);
          const { videos } = resp.data;
          return videos;
     } catch (err) {

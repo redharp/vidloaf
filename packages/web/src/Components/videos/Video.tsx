@@ -18,7 +18,7 @@ export function Video(props: VideoProps) {
     return (
         <Flex>
             <Box>
-                <Link style={{textDecoration: 'none'}} href={`$https://reddit.com${props.comments}`}><Text fontFamily='helvetica' fontWeight='bolder' color='black'>{props.title}</Text></Link>
+                <Link style={{textDecoration: 'none'}} href={`https://reddit.com${props.comments}`}><Text fontFamily='helvetica' fontWeight='bolder' color='black'>{props.title}</Text></Link>
                 <iframe
                     width='560'
                     height='315'

@@ -1,6 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Vidloaf from './Components/Vidloaf';
+import { Provider } from 'mobx-react';
+import { stores } from './stores'
+import VideoPlayer from './components/mobx/VideoPlayer';
 
-// tslint:disable-next-line:no-console
-ReactDOM.render(<Vidloaf />, document.getElementById('app'), () => console.log('got it'));
+ReactDOM.render(
+    <Provider {...stores}>
+        <VideoPlayer />
+    </Provider>,
+    document.getElementById('app'), () => console.log('got it')
+);

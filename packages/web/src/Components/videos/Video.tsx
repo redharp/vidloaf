@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Rail, Segment, List, Header } from 'semantic-ui-react';
 import { Text, Box, Flex, Link, Card } from 'rebass';
 import moment from 'moment'
 
@@ -16,22 +17,31 @@ export function Video(props: VideoProps) {
     const momentTime: string = moment(new Date(props.submitted)).format('L');
 
     return (
-        // <Flex>
-            <Box>
-                <Link p={5} style={{textDecoration: 'none'}} href={`https://reddit.com${props.comments}`}><Text fontFamily='helvetica' fontWeight='bolder' color='black'>{props.title}</Text></Link>
-            <iframe
-                    width='560'
-                    height='315'
-                    frameBorder='0'
-                    allowFullScreen
-                    src={props.url}
+      <Container>
+        <Segment raised>
+        <Header
+          p={5}
+          style={{ textDecoration: "none" }}
+          href={`https://reddit.com${props.comments}`}
+        >
+          <Text fontFamily="helvetica" fontWeight="bolder" color="black">
+            {props.title}
+          </Text>
+        </Header>
+          <iframe
+            width="560"
+            height="315"
+            frameBorder="0"
+            allowFullScreen
+            src={props.url}
                 />
-                <Text fontSize='small'>⚡ { props.upvotes }</Text>
-                <Text fontSize='small'>👨‍💻 { props.author }</Text>
-                <Text fontSize='small'>🗓 { momentTime }</Text>
-            </Box>
-        // </Flex>
-
+            <List>
+              <List.Item fontSize="small">⚡ {props.upvotes}</List.Item>
+              <List.Item fontSize="small">👨‍💻 {props.author}</List.Item>
+              <List.Item fontSize="small">🗓 {momentTime}</List.Item>
+            </List>
+          </Segment>
+      </Container>
     );
 
 }

@@ -31,7 +31,7 @@ export class SubredditVideosStore implements ISubredditVideosStore {
     state: string = 'pending';
 
     @observable
-    subreddit: string = 'videos';
+    subreddit = 'livestreamfail';
 
     @observable
     subredditVideos: VideoProps[] = [];

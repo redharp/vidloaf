@@ -18,7 +18,7 @@ export function Video(props: VideoProps) {
 
     return (
       <Container>
-        <Segment raised>
+
         <Header
           p={5}
           style={{ textDecoration: "none" }}
@@ -40,7 +40,7 @@ export function Video(props: VideoProps) {
               <List.Item fontSize="small">👨‍💻 {props.author}</List.Item>
               <List.Item fontSize="small">🗓 {momentTime}</List.Item>
             </List>
-          </Segment>
+
       </Container>
     );
 

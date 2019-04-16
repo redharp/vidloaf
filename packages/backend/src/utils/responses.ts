@@ -5,8 +5,7 @@ import { IVideo, IVideoResponse } from '../data/interfaces';
 
 
 
-export function videoResponseBuilder(posts: IRedditPost[]): IVideoResponse[] { 
-    // console.log(JSON.stringify(posts, null, 2))
+export function videoResponseBuilder(posts: IRedditPost[]): IVideoResponse[] {
     return posts
         .map((post: IRedditPost) => buildVideo(post))
         .filter((v: IVideoResponse) => v.video);
@@ -28,6 +27,7 @@ function buildVideo(post: IRedditPost): IVideoResponse {
         submitted,
     };
 }
+
 function mediaHandler(media: IMedia, url: string): IVideo {
     let video: IVideo = {};
     const { type, reddit_video } = media;

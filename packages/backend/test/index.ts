@@ -1,6 +1,3 @@
-// import { getReddit36, IRedditType } from '../src/utils/encoding';
-import { HttpService } from '../src/services/HttpService';
-import { IRedditResponse, IRedditPost } from '../src/data/IRedditResponse';
 import { RedditRestService } from '../src/services/RedditRestService';
 // tslint:disable:no-console
 

@@ -14,6 +14,3 @@ export interface IVideo {
     url?: string;
     thumbnailUrl?: string;
 }
-
-
-

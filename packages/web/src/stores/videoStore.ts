@@ -1,4 +1,4 @@
-import { observable, action, computed, flow, runInAction } from 'mobx';
+import { observable, action, computed, flow, runInAction, reaction } from 'mobx';
 import { IVideoResponse } from '@backend/data/interfaces';
 import { getRedditVideos } from '../lib/videos'
 import { VideoProps } from 'Components/videos/Video';
@@ -24,6 +24,7 @@ export interface ISubredditVideosStore {
     fetchVideos: () => Promise<void>;
     prevVideo: () => void;
     nextVideo: () => void;
+    setSubreddit: (subreddit: string) => any;
 }
 
 export class SubredditVideosStore implements ISubredditVideosStore {
@@ -44,6 +45,15 @@ export class SubredditVideosStore implements ISubredditVideosStore {
 
     @observable
     setSubreddit(subreddit: string) {
+        reaction(
+            () => this.subreddit,
+            async (subreddit, reaction) => {
+                console.log(subreddit);
+                this.subreddit = subreddit;
+                await this.fetchVideos()
+                reaction.dispose();
+            }
+        )
         this.subreddit = subreddit;
     }
     @observable

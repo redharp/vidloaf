@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Segment, Button, List } from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 import { ISubredditVideosStore } from '../../stores/videoStore'
 import { Video } from '../../components/videos/Video';
 import { VideoNavButtons } from '../../components/Video/VideoNavButtons';
 import './index.css';
+
 interface AppProps {
-    subredditStore?: ISubredditVideosStore
+    subredditStore?: ISubredditVideosStore,
 }
 
 @inject('subredditStore')
@@ -23,6 +24,11 @@ class VideoPlayer extends Component<AppProps> {
         this.props.subredditStore.nextVideo();
     }
 
+    setSubreddit = (subreddit: string) => {
+
+        this.props.subredditStore.setSubreddit(subreddit);
+    }
+
     render() {
         return (
             <Container className="goodContainer" textAlign="center">
@@ -34,6 +40,26 @@ class VideoPlayer extends Component<AppProps> {
                             nextVideo: this.nextVideo,
                         }}
                     />
+                    <List>
+                        <List.Item as='a' onClick={ () => this.setSubreddit('videos')}>
+                            r/videos
+                        </List.Item>
+                        <List.Item as='a' onClick={ () => this.setSubreddit('livestreamfail')}>
+                            r/livestreamfail
+                        </List.Item>
+                        <List.Item as='a' onClick={ () => this.setSubreddit('gaming')}>
+                            r/gaming
+                        </List.Item>
+                        <List.Item as='a' onClick={ () => this.setSubreddit('nba')}>
+                            r/nba
+                        </List.Item>
+                        <List.Item as='a' onClick={ () => this.setSubreddit('popular')}>
+                            r/popular
+                        </List.Item>
+                        <List.Item as='a' onClick={ () => this.setSubreddit('all')}>
+                            r/all
+                        </List.Item>
+                    </List>
                 </Segment>
             </Container>
         );

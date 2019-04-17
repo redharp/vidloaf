@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Rail, Segment, List, Header } from 'semantic-ui-react';
+import { Container, Rail, Segment, List, Header, Embed } from 'semantic-ui-react';
 import { Text, Box, Flex, Link, Card } from 'rebass';
 import moment from 'moment'
 
@@ -28,13 +28,7 @@ export function Video(props: VideoProps) {
             {props.title}
           </Text>
         </Header>
-          <iframe
-            width="560"
-            height="315"
-            frameBorder="0"
-            allowFullScreen
-            src={props.url}
-                />
+        <Embed active url={props.url} />
             <List>
               <List.Item fontSize="small">⚡ {props.upvotes}</List.Item>
               <List.Item fontSize="small">👨‍💻 {props.author}</List.Item>

@@ -21,6 +21,7 @@ export interface ISubredditVideosStore {
     state: string;
     subredditVideos: VideoProps[];
     video: VideoProps;
+    subreddit: string
     fetchVideos: () => Promise<void>;
     prevVideo: () => void;
     nextVideo: () => void;

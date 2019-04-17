@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Segment, Button, List } from 'semantic-ui-react';
+import { Container, Segment, Button, List, Item, Loader} from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 import { ISubredditVideosStore } from '../../stores/videoStore'
 import { Video } from '../../components/videos/Video';
@@ -32,8 +32,17 @@ class VideoPlayer extends Component<AppProps> {
     render() {
         return (
             <Container className="goodContainer" textAlign="center">
+                <Item>
+                {
+                    `r/${this.props.subredditStore.subreddit}`
+                }
+                </Item>
                 <Segment raised>
-                    <Video {...this.props.subredditStore.video} />
+                    {
+                        this.props.subredditStore.state !== 'done' ?
+                            <Loader active /> :
+                            <Video {...this.props.subredditStore.video} />
+                    }
                     <VideoNavButtons
                         {...{
                             prevVideo: this.prevVideo,
@@ -56,8 +65,8 @@ class VideoPlayer extends Component<AppProps> {
                         <List.Item as='a' onClick={ () => this.setSubreddit('popular')}>
                             r/popular
                         </List.Item>
-                        <List.Item as='a' onClick={ () => this.setSubreddit('all')}>
-                            r/all
+                        <List.Item as='a' onClick={ () => this.setSubreddit('documentaries')}>
+                            r/documentaries
                         </List.Item>
                     </List>
                 </Segment>

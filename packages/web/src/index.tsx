@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import { stores } from './stores'
-import VideoPlayer from './components/mobx/VideoPlayer';
+import VideoPlayer from './Components/mobx/VideoPlayer';
 
 ReactDOM.render(
     <Provider {...stores}>

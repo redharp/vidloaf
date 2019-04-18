@@ -5,10 +5,11 @@ import { VideoProps } from 'Components/videos/Video';
 import { CancellablePromise } from 'mobx/lib/api/flow';
 
 function processVideo(video: IVideoResponse): VideoProps {
-    const { title, originalPoster, score, video: { url }, comments, submitted } = video;
+    const { title, originalPoster, score, video: { url, origin }, comments, submitted } = video;
 
     return {
         title,
+        origin,
         author: originalPoster,
         upvotes: score,
         url,

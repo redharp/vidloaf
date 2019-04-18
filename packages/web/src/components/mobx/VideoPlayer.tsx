@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, Segment, Button, List, Item, Loader} from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 import { ISubredditVideosStore } from '../../stores/videoStore'
-import { Video } from '../../components/videos/Video';
-import { VideoNavButtons } from '../../components/Video/VideoNavButtons';
+import { Video } from '../../Components/videos/Video';
+import { VideoNavButtons } from '../../Components/Video/VideoNavButtons';
 import './index.css';
 
 interface AppProps {
@@ -31,26 +31,11 @@ class VideoPlayer extends Component<AppProps> {
 
     render() {
         return (
-            <Container className="goodContainer" textAlign="center">
-                <Item>
-                {
-                    `r/${this.props.subredditStore.subreddit}`
-                }
-                </Item>
-                <Segment raised>
-                    {
-                        this.props.subredditStore.state !== 'done' ?
-                            <Loader active /> :
-                            <Video {...this.props.subredditStore.video} />
-                    }
-                    <VideoNavButtons
-                        {...{
-                            prevVideo: this.prevVideo,
-                            nextVideo: this.nextVideo,
-                        }}
-                    />
-                    <List>
-                        <List.Item as='a' onClick={ () => this.setSubreddit('videos')}>
+            <Container className='goodContainer' textAlign='center'>
+                 <Item size='large'>{`r/${this.props.subredditStore.subreddit}`}</Item>
+            <List celled horizontal>
+
+                        <List.Item as='a' ref={'videos'} onClick={ () => this.setSubreddit('videos')}>
                             r/videos
                         </List.Item>
                         <List.Item as='a' onClick={ () => this.setSubreddit('livestreamfail')}>
@@ -68,8 +53,20 @@ class VideoPlayer extends Component<AppProps> {
                         <List.Item as='a' onClick={ () => this.setSubreddit('documentaries')}>
                             r/documentaries
                         </List.Item>
-                    </List>
+            </List>
+                <Segment size='massive' raised>
+                    {
+                        this.props.subredditStore.state !== 'done' ?
+                            <Loader size='massive' active  /> :
+                            <Video {...this.props.subredditStore.video} />
+                    }
                 </Segment>
+                    <VideoNavButtons
+                        {...{
+                            prevVideo: this.prevVideo,
+                            nextVideo: this.nextVideo,
+                        }}
+                    />
             </Container>
         );
     }

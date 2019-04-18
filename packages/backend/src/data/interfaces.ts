@@ -1,6 +1,14 @@
+export enum VideoSource {
+    YOUTUBE = 'youtube',
+    TWITCH = 'twitch',
+    STREAMABLE = 'streamable',
+    REDDIT = 'reddit',
+    GFYCAT = 'gfycat',
+}
+
 export interface IVideoResponse {
     id?: string;
-    videoSource?: 'youtube' | 'twitch' | 'streamable' | 'reddit'
+    videoSource?: VideoSource
     score?: number;
     title?: string;
     originalPoster?: string;
@@ -10,7 +18,8 @@ export interface IVideoResponse {
 }
 
 export interface IVideo {
-    origin?: 'youtube' | 'twitch' | 'streamable' | 'reddit';
+    // origin?: 'youtube' | 'twitch' | 'streamable' | 'reddit' | 'gfycat';
+    origin?: VideoSource;
     url?: string;
     thumbnailUrl?: string;
 }

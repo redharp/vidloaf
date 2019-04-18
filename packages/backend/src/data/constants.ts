@@ -27,3 +27,5 @@ export const TWITCH_APPEND: string = '&autoplay=false';
 // streamable
 export const STREAMABLE_TYPE: string = 'streamable.com';
 export const STREAMABLE_EMBED: string = '/o/'
+
+export const GFYCAT_TYPE: string = 'gfycat.com'

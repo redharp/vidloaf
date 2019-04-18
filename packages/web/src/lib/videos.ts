@@ -17,6 +17,7 @@ export function getRedditVideo(video: IVideoResponse): VideoProps {
 
     return {
         title,
+        origin,
         author: originalPoster,
         upvotes: score,
         url,

@@ -4,12 +4,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require("path");
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.tsx',
   devtool: 'source-map',
   output: {
-    filename: '[name].js',
-    path: path.resolve('..', 'dist/web')
+    filename: 'bundle.[hash].js',
+    path: path.resolve('../../', 'dist/web')
   },
   module: {
     rules: [
@@ -33,7 +33,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
-    // alias: { mobx: __dirname + "/node_modules/mobx/lib/mobx.es6.js" },
     plugins: [
       new TsConfigPathsPlugin()
     ]

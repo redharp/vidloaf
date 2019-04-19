@@ -5,7 +5,7 @@ const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loade
 module.exports = {
   mode: 'production',
   entry: './src/app.ts',
-  devtool: 'source-map',
+  // devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     plugins: [
@@ -14,8 +14,8 @@ module.exports = {
   },
   output: {
     libraryTarget: 'commonjs',
-    path: path.resolve('..', 'dist/backend'),
-    filename: '[name].js',
+    path: path.resolve('../../', 'dist'),
+    filename: 'server.js',
   },
   target: 'node',
   module: {

@@ -13,6 +13,7 @@
     "module": "es6",
     "outDir": "lib",
     "baseUrl": "./src/",
+    "types": ["mocha"],
     "paths": {
       "@backend/*": [
         "*"

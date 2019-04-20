@@ -15,8 +15,9 @@ router.get('/clips', async (ctx: Context) => {
 
 router.get('/clips/:subreddit', async(ctx : Context) => {
     if (!redditService) redditService = new RedditRestService();
-    let subreddit : string = ctx.params.subreddit;
-    const videos = await redditService.getPosts(subreddit || 'videos', 50);
+    const subreddit: string = ctx.params.subreddit;
+    const limit: string = ctx.query['limit'] || '50';
+    const videos = await redditService.getPosts(subreddit || 'videos', Number(limit));
     ctx.body = { videos };
 });
 

@@ -2,7 +2,6 @@ import { observable, action, computed, flow, runInAction, reaction } from 'mobx'
 import { IVideoResponse } from '@backend/data/interfaces';
 import { getRedditVideos } from '../lib/videos'
 import { VideoProps } from 'Components/videos/Video';
-import { CancellablePromise } from 'mobx/lib/api/flow';
 
 function processVideo(video: IVideoResponse): VideoProps {
     const { title, originalPoster, score, video: { url, origin }, comments, submitted } = video;
@@ -34,7 +33,7 @@ export class SubredditVideosStore implements ISubredditVideosStore {
     state: string = 'pending';
 
     @observable
-    subreddit = 'livestreamfail';
+    subreddit = 'videos';
 
     @observable
     subredditVideos: VideoProps[] = [];
@@ -71,6 +70,7 @@ export class SubredditVideosStore implements ISubredditVideosStore {
             console.log(videos)
             const processedVideos: VideoProps[] = videos.map((v: IVideoResponse) => processVideo(v));
             runInAction(() => {
+                this.index = 0;
                 this.state = 'done';
                 this.subredditVideos = processedVideos;
                 this.video = processedVideos[this.index];

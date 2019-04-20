@@ -3,9 +3,12 @@
   "private": true,
   "scripts": {
     "backend:build": "yarn workspace backend run build",
-    "backend:start": "yarn backend:build && cd dist && node server.js",
+    "backend:start": "yarn backend:build && node server.js",
     "web:build": "yarn workspace web run build",
-    "start": "yarn web:build && yarn backend:start"
+    "gcloud:build": "yarn web:build && yarn backend:build",
+    "gcloud:deploy": "gcloud app deploy",
+    "gcp-build": "yarn gcloud:build",
+    "start": "node server.js"
   },
   "workspaces": [
     "packages/web",

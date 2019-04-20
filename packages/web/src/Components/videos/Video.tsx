@@ -1,7 +1,5 @@
 import React from 'react';
-import { Container, Label, Segment, List, Header, Embed } from 'semantic-ui-react';
-import { Text, Box, Flex, Link, Card } from 'rebass';
-import { VideoSource } from '@backend/data/interfaces';
+import { Container, Label, Header, Embed } from 'semantic-ui-react';
 import moment from 'moment'
 
 
@@ -21,17 +19,12 @@ export function Video(props: VideoProps) {
     return (
         <Container>
             <Header
+                size='small'
                 p={5}
                 style={{ textDecoration: "none" }}
                 href={`https://reddit.com${props.comments}`}
             >
-                <Text
-                    fontFamily="helvetica"
-                    fontWeight="bolder"
-                    color="black"
-                >
                     {props.title}
-                </Text>
             </Header>
             <Embed active url={props.url} />
             <div style={{ padding: "5px" }}>

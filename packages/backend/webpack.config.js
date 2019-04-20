@@ -14,7 +14,7 @@ module.exports = {
   },
   output: {
     libraryTarget: 'commonjs',
-    path: path.resolve('../../', 'dist'),
+    path: path.resolve('../../'),
     filename: 'server.js',
   },
   target: 'node',

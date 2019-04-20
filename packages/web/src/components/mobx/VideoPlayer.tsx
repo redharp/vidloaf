@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Segment, Button, List, Item, Loader} from 'semantic-ui-react';
+import { Container, Segment, List, Item, Loader} from 'semantic-ui-react';
 import { observer, inject } from 'mobx-react';
 import { ISubredditVideosStore } from '../../stores/videoStore'
 import { Video } from '../../Components/videos/Video';

@@ -30,7 +30,7 @@ function buildVideo(post: IRedditPost): IVideoResponse {
 
 function mediaHandler(media: IMedia, url: string): IVideo {
     let video: IVideo = {};
-    const { type, reddit_video, oembed: { thumbnail_url } } = media;
+    const { type, reddit_video, oembed} = media;
     if (type) {
         switch (type) {
             case YT_TYPE: {
@@ -54,7 +54,7 @@ function mediaHandler(media: IMedia, url: string): IVideo {
             case GFYCAT_TYPE: {
                 //https://gfycat.com/celebratedpositivecomet",
                 const parsedUrl = () => {
-                    let slugs: string[] = thumbnail_url.split('-');
+                    let slugs: string[] = oembed.thumbnail_url.split('-');
                     return slugs[0].replace('thumbs', 'giant') + '.mp4';
                 }
                 video.origin = VideoSource.GFYCAT;

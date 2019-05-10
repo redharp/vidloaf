@@ -11,7 +11,7 @@ import videoRoutes from './routes/videos';
 const port: number = Number(process.env.PORT) || 80;
 const app: Koa = new Koa();
 
-app.use(serve('web'))
+app.use(serve('dist'))
 app.use(KoaHelmet());
 app.use(videoRoutes.routes());
 

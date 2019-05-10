@@ -69,7 +69,8 @@ typings/
 # vscode
 .vscode
 
-web
+dist
+
 
 # built server file
 server.js

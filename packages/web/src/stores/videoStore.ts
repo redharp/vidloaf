@@ -67,7 +67,6 @@ export class SubredditVideosStore implements ISubredditVideosStore {
         this.state = 'pending';
         try {
             const videos = await getRedditVideos(this.subreddit);
-            console.log(videos)
             const processedVideos: VideoProps[] = videos.map((v: IVideoResponse) => processVideo(v));
             runInAction(() => {
                 this.index = 0;

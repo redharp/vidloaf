@@ -10,7 +10,7 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
         filename: 'bundle.[hash].js',
-        path: path.resolve('../../', 'web'),
+        path: path.resolve('../../', 'dist'),
     },
     module: {
         rules: [
@@ -37,7 +37,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({ template: './src/index.html' }),
+        new HtmlWebpackPlugin({ template: './assets/index.html', favicon: './assets/vidloaf.ico' }),
         new ForkTsCheckerPlugin(),
         new HardSourcePlugin(),
     ]

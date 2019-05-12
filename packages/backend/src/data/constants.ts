@@ -8,24 +8,66 @@ export enum RedditTypes {
   t6 = "Award"
 }
 
-export const BASE_URL: string = `https://reddit.com/r/`;
-
+export const BASE_URL         = `https://reddit.com/r/`;
 // youtube
-export const YT_APPEND: string = `?feature=oembed&enablejsapi=1`;
-export const YT_WATCH: string = 'watch?v=';
-export const YT_EMBED: string = 'embed/';
-export const YT_TYPE: string = 'youtube.com';
-
+export const YT_APPEND        = `?feature=oembed&enablejsapi=1`;
+export const YT_WATCH         = 'watch?v=';
+export const YT_EMBED         = 'embed/';
+export const YT_TYPE          = 'youtube.com';
 // twitch
-export const TWITCH_TYPE: string = 'clips.twitch.tv';
-export const TWITCH_EMBED: string = '/embed?clip=';
-export const TWITCH_APPEND: string = '&autoplay=false';
-
-// reddit
-
-
+export const TWITCH_TYPE      = 'clips.twitch.tv';
+export const TWITCH_EMBED     = '/embed?clip=';
+export const TWITCH_APPEND    = '&autoplay=false';
 // streamable
-export const STREAMABLE_TYPE: string = 'streamable.com';
-export const STREAMABLE_EMBED: string = '/o/'
+export const STREAMABLE_TYPE  = 'streamable.com';
+export const STREAMABLE_EMBED = '/o/'
+export const GFYCAT_TYPE      = 'gfycat.com'
 
-export const GFYCAT_TYPE: string = 'gfycat.com'
+export const SUBREDDITS: string[] = [
+    'gadgets',
+    'sports',
+    'gaming',
+    'pics',
+    'worldnews',
+    'videos',
+    'AskReddit',
+    'aww',
+    'Music',
+    'funny',
+    'news',
+    'movies',
+    'blog',
+    'books',
+    'history',
+    'food',
+    'philosophy',
+    'Jokes',
+    'Art',
+    'DIY',
+    'space',
+    'Documentaries',
+    'askscience',
+    'nottheonion',
+    'todayilearned',
+    'gifs',
+    'listentothis',
+    'IAmA',
+    'announcements',
+    'TwoXChromosomes',
+    'creepy',
+    'nosleep',
+    'GetMotivated',
+    'WritingPrompts',
+    'LifeProTips',
+    'EarthPorn',
+    'explainlikeimfive',
+    'Showerthoughts',
+    'Futurology',
+    'photoshopbattles',
+    'mildlyinteresting',
+    'tifu',
+    'OldSchoolCool',
+    'UpliftingNews',
+    'InternetIsBeautiful',
+    'science',
+];

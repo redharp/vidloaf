@@ -57,10 +57,6 @@ export class SubredditVideosStore implements ISubredditVideosStore {
         )
         this.subreddit = subreddit;
     }
-    @observable
-    getSubreddit(subreddit: string) {
-        return this.subreddit = subreddit;
-    }
 
     @action
     async fetchVideos() {
